@@ -6,6 +6,11 @@
       <li>
         <strong><%= massage.name %></strong> - <%= number_to_currency(massage.price) %> (<%= massage.duration %> minutes)
         <p><%= massage.description %></p>
+        <% if user_signed_in? %>
+          <button>Select</button>
+        <% else %>
+          <p>Log In to reserv</p>
+        <% end %>
       </li>
     <% end %>
 </ul>
