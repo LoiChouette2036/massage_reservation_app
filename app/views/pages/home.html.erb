@@ -1,1 +1,11 @@
 <h1>Welcome to Massage reservation</h1>
+
+<h2>Available Massages</h2>
+<ul>
+    <% @massages.each do |massage| %>
+      <li>
+        <strong><%= massage.name %></strong> - <%= number_to_currency(massage.price) %> (<%= massage.duration %> minutes)
+        <p><%= massage.description %></p>
+      </li>
+    <% end %>
+</ul>
