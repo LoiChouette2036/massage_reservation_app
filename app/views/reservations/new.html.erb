@@ -1,0 +1,21 @@
+<h1>Reserve Your Massage<h1>
+
+<%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+  <h2><%= @massage.name %></h2>
+  <p><%= @massage.description %></p>
+  <p>Duration: <%= @massage.duration %> minutes</p>
+  <p>Price: <%= number_to_currency(@massage.price) %></p>
+
+  <%= f.hidden_field :massage_id, value: @massage.id %>
+
+  <h3>Select a Date</h3>
+  <div data-controller="calendar">
+    <%= month_calendar do |date| %>
+        <%= link_to date.strftime("%Y-%m-%d"), "#", class: "calendar-date", data: { action: "click->calendar#selectDate" } %>
+    <% end %>
+
+    <%= f.hidden_field :start_time, id: "selected_date", data: { calendarTarget: "dateInput"} %>
+  </div>
+
+  <%= f.submit "Reserve", class: "btn-reserve" %>
+<% end %>

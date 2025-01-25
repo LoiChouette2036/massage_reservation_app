@@ -7,7 +7,7 @@
         <strong><%= massage.name %></strong> - <%= number_to_currency(massage.price) %> (<%= massage.duration %> minutes)
         <p><%= massage.description %></p>
         <% if user_signed_in? %>
-          <button>Select</button>
+          <%= link_to "Select", new_reservation_path(massage_id: massage.id), method: :get %>
         <% else %>
           <p>Log In to reserv</p>
         <% end %>
