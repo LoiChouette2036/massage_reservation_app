@@ -1,0 +1,60 @@
+.calendar-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fafafa;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .calendar-day {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(14.28% - 8px); /* 7 columns each ~14.28% wide minus margins */
+    margin: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  /* Each date is a clickable box */
+  .calendar-date {
+    display: inline-block;
+    width: 100%;
+    padding: 8px 0;
+    color: #007bff;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .calendar-date:hover {
+    background-color: #f0f8ff;
+    text-decoration: underline;
+  }
+  
+  /* Highlight the clicked date */
+  .selected-date {
+    background-color: #a8ffa8 !important;
+    border-color: #05aa05;
+    font-weight: bold;
+  }
+  
+  /* Button styling for "Reserve" */
+  .btn-reserve {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff;
+    background: #007bff;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .btn-reserve:hover {
+    background: #0056d2;
+  }
+  

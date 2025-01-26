@@ -1,20 +1,29 @@
-<h1>Reserve Your Massage<h1>
+<h1>Reserve Your Massage</h1>
 
-<%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+<%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
   <h2><%= @massage.name %></h2>
   <p><%= @massage.description %></p>
   <p>Duration: <%= @massage.duration %> minutes</p>
   <p>Price: <%= number_to_currency(@massage.price) %></p>
 
+  <!-- Keep the selected massage ID -->
   <%= f.hidden_field :massage_id, value: @massage.id %>
 
   <h3>Select a Date</h3>
-  <div data-controller="calendar">
+
+  <!-- Stimulus hooks in here -->
+  <div class="calendar-container" data-controller="calendar">
     <%= month_calendar do |date| %>
-        <%= link_to date.strftime("%Y-%m-%d"), "#", class: "calendar-date", data: { action: "click->calendar#selectDate" } %>
+      <span class="calendar-day">
+        <%= link_to date.strftime("%Y-%m-%d"), "#",
+          class: "calendar-date",
+          data: { action: "click->calendar#selectDate" } %>
+      </span>
     <% end %>
 
-    <%= f.hidden_field :start_time, id: "selected_date", data: { calendarTarget: "dateInput"} %>
+    <!-- Hidden field Stimulus will populate; note the dash in "calendar-target" -->
+    <%= f.hidden_field :start_time,
+          data: { "calendar-target": "dateInput" } %>
   </div>
 
   <%= f.submit "Reserve", class: "btn-reserve" %>
