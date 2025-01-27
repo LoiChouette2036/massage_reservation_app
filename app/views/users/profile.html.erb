@@ -1,3 +1,17 @@
 <h1>Welcome, <%= current_user.email %>!</h1>
 
 <h2>Your Reservations</h2>
+
+<% if @reservations.any? %>
+  <ul>
+    <% @reservations.each do |reservation| %>
+      <li>
+        <strong>Massage:</strong> <%= reservation.massage.name %><br>
+        <strong>Date:</strong> <%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %><br>
+        <strong>Status:</strong> <%= reservation.status.capitalize %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no reservations yet.</p>
+<% end %>
